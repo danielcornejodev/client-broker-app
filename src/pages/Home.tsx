@@ -15,7 +15,7 @@ export default function Home() {
   const [plans, setPlans] = useState<Plan[]>([]);
 
   const fetchPlans = async (coverage = "", maxPremium = 0) => {
-    const res = await axios.get("http://localhost:5002/api/plans", {
+    const res = await axios.get("https://server-broker-app.vercel.app/api/plans", {
       params: { coverage, maxPremium }
     });
     setPlans(res.data);
@@ -25,7 +25,7 @@ export default function Home() {
     const userName = prompt("Enter user name:");
     const age = Number(prompt("Enter age:"));
     if (!userName || !age) return;
-    const res = await axios.post(`http://localhost:5002/api/plans/${id}/enroll`, { userName, age });
+    const res = await axios.post(`https://server-broker-app.vercel.app/api/plans/${id}/enroll`, { userName, age });
     console.log(res);
     alert(res.data.message);
   };

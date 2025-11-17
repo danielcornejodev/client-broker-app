@@ -3,6 +3,8 @@
 React + TypeScript front-end for the Medicare Broker application.  
 Displays Medicare plans fetched from the backend API, with search and filter functionality. Tailwind CSS is used for styling.
 
+Deployed on Netlify: https://client-broker-app.netlify.app/
+
 ## Features
 
 - List Medicare plans with provider and premium details

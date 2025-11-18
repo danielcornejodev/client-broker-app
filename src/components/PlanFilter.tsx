@@ -13,7 +13,7 @@ export default function PlanFilter({ onFilter }: Props) {
       <h2 className="text-1xl font-bold mb-4">Input Coverage Type: </h2>
       <input
         type="text"
-        placeholder="Silver, Platinum, or Premium"
+        placeholder="e.g. hospital, dental, vision, hearing"
         value={coverage}
         onChange={e => setCoverage(e.target.value)}
         className="border p-1 mr-2 mb-4 w-60"
@@ -28,9 +28,9 @@ export default function PlanFilter({ onFilter }: Props) {
       />
       <button
         onClick={() => onFilter(coverage, maxPremium)}
-        className="bg-green-500 text-white px-3 py-1 rounded w-20"
+        className="bg-green-500 text-white px-3 py-1 rounded w-40"
       >
-        Search
+        Apply Filter
       </button>
     </div>
   );

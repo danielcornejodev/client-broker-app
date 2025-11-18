@@ -14,7 +14,12 @@ interface Plan {
 export default function Home() {
   const [plans, setPlans] = useState<Plan[]>([]);
 
-  const fetchPlans = async (coverage = "", maxPremium = 0) => {
+  const fetchPlans = async () => {
+    const res = await axios.get("https://server-broker-app.vercel.app/api/plans");
+    setPlans(res.data);
+  }
+
+  const fetchFilteredPlans = async (coverage = "", maxPremium = 0) => {
     const res = await axios.get("https://server-broker-app.vercel.app/api/plans", {
       params: { coverage, maxPremium }
     });
@@ -37,7 +42,7 @@ export default function Home() {
   return (
     <div className="p-6">
       <h1 className="text-2xl font-bold mb-4">Medicare Plans</h1>
-      <PlanFilter onFilter={fetchPlans} />
+      <PlanFilter onFilter={fetchFilteredPlans} />
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
         {plans.map(plan => (
           <PlanCard key={plan.id} plan={plan} onEnroll={handleEnroll} />
